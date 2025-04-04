@@ -127,6 +127,7 @@ is depositing, and the balance after performing the operation.
 message is shown when a customer leaves the branch after performing one or more operations.
 Specifies the number of the client, the branch at which the customer has been operating, and
 the time at which the client has finished his appointment and leaves.
+
 As explained in the description of the project, each operation is performed in a moment of
 time during the simulation, depending on when each customer has entered the branch and it
 is organized in the queue to be attended.
