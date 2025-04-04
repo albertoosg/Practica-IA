@@ -1,4 +1,4 @@
-Description of the project
+1. Description of the project
 
 The main objective of this project is to simulate the functioning of a bank branch, providing a realistic representation of customer service dynamics, employee roles, and operational
 workflow. The simulation will include multiple branches (A, B, and C), each designed to
@@ -23,7 +23,7 @@ the moment a customer enters the branch to the moment the customer leaves. Moreo
 simulation shows how long a customer waits in the queue until its attended by an employee
 in a post of the branch.
 
-Code Structure
+2. Code Structure
 
 Main
 Here we find the customer generator function, which creates customers during the simulation
@@ -55,7 +55,7 @@ The branch class provides information on the branches and the number of counters
 branch. It has counters for the total number of customers who come to the branch, the
 money lent by the bank, and the money invested by the customers.
 
-Technical Aspects
+3. Technical Aspects
 
 The code simulates the activity of a multi-branch bank using the simpy library for event
 simulation. It is structured in four main files: main.py, which organizes the simulation;
@@ -73,7 +73,7 @@ parameters to the user, executes the process and generates a summary.
 their turn in the assigned branch.
 - branch-bank.py: This class manages branch randomization and generates a CSV report.
 
-Execution Analysis Explanation
+4. Execution Analysis Explanation
 
 By executing the project code, the program asks the user how many customers the user
 wants to generate to enter and operate in a branch. In addition, the program asks the user
