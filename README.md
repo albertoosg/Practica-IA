@@ -11,6 +11,7 @@ or withdraw cash as needed.
 and assist customers in making informed investment decisions.
 - Bank loans and credits: The bank will offer loan services, where customers can apply
 for personal or business loans, mortgages, and other credit-related products.
+
 Each service post will be managed by a dedicated employee, who will be responsible for
 efficiently handling customer requests. In addition, each branch will have a branch manager,
 tasked with overseeing daily operations, ensuring workflow efficiency, and addressing any
