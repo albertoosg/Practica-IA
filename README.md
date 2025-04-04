@@ -141,25 +141,47 @@ All the information is stored at the end of the simulation in a file called ”s
 5. Structure
 
 |-Primera Entrega Bank.zip
+
   |-src
+  
     |main.py
+    
     |branch.py
+    
     |branch_bank.py
+    
     |branch_client.py
+    
   |-doc
+  
     |-Screenshots
+    
       |Example Simulation 1.1.jpeg
+      
       |Exmaple Simulation 1.2.jpeg
+      
       |Example Simulation 1.3.jpeg
+      
       |Example Simulation 1.4.jpeg
+      
       |Summary Simulation 1.jpeg
+      
       |Example Simulation 2.1.jpeg
+      
       |Example Simulation 2.2.jpeg
+      
       |Example Simulation 2.3.jpeg
+      
       |Summary Simulation 2.jpeg
+      
     |main.tex
+    
     |Project_AI.pdf
+    
   |-data_analisys
+  
     |bank_analisys.html
+    
     |bank_analisys.ipynb
+    
     |simulation.csv
