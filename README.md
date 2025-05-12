@@ -23,14 +23,12 @@ In the end, we obtain a summary of the data of each branch with which we can mak
 comparison of which one is more efficient, which one has more clients, or the ones that lend
 or receive more money for investments.
 
-Bank
-The Bank class serves as the central entity in the simulation, managing the overall structure
+- Bank: The Bank class serves as the central entity in the simulation, managing the overall structure
 and operations of the bank. It contains general information about the bank, such as its
 name, the total number of branches, and any additional attributes that may define its operations. This class is responsible for assigning customers to branches and ensuring a balanced
 distribution of clients across multiple locations.
 
-Clients
-The Clients class is designed to represent a customer who interacts with a bank branch
+- Clients: The Clients class is designed to represent a customer who interacts with a bank branch
 in a simulated environment. This class stores and manages essential customer information
 while tracking their journey through the bank, from arrival to departure. Clients will be
 able to perform different operations, such as depositing or withdrawing money, investing, or
@@ -38,19 +36,15 @@ borrowing with probability.
 Each instance of this class will hold details about an individual customer, such as their unique
 identification, financial status, and the type of banking operations they may require.
 
-Branches
-The branch class provides information on the branches and the number of counters in each
+- Branches: The branch class provides information on the branches and the number of counters in each
 branch. It has counters for the total number of customers who come to the branch, the
 money lent by the bank, and the money invested by the customers.
 
-Config
-The config class defines the basic configuration parameters for the simulation, including the name of the bank, the number of simulation time steps, branch data (such as number of counters and interest rates for loans and investments), as well as possible ranges for the number of customers and their starting salaries.
+- Config: The config class defines the basic configuration parameters for the simulation, including the name of the bank, the number of simulation time steps, branch data (such as number of counters and interest rates for loans and investments), as well as possible ranges for the number of customers and their starting salaries.
 
-Fuzzy_risk
-The Fuzzy-risk class implements a fuzzy logic system with the skfuzzy library to calculate the risk associated with financial transactions based on the customer's age, balance and requested amount, using fuzzy sets and a set of rules that determine whether the risk is low, medium or high.
+- Fuzzy_risk: The Fuzzy-risk class implements a fuzzy logic system with the skfuzzy library to calculate the risk associated with financial transactions based on the customer's age, balance and requested amount, using fuzzy sets and a set of rules that determine whether the risk is low, medium or high.
 
-Steps_simulation
-The Steps-simulation class contains the main logic for running the simulation in time steps using simpy, managing the operations performed by customers in each step, the concurrent execution of these operations and the generation of summaries at the end of the simulation, both at the level of each branch and of the entire bank.
+- Steps_simulation: The Steps-simulation class contains the main logic for running the simulation in time steps using simpy, managing the operations performed by customers in each step, the concurrent execution of these operations and the generation of summaries at the end of the simulation, both at the level of each branch and of the entire bank.
 
 3. Technical Aspects
 
