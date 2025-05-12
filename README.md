@@ -131,48 +131,95 @@ Moreover, all the data are analyzed in "bank-analisys.ipynb", where six graphics
 
 6. Structure
 
-|-Primera Entrega Bank.zip
+|-Práctica IA.zip
 
-  |-src
+  |-Primera Entrega corregida
+    |-src
+
+      |config.py
+      
+      |main.py
+
+      |-simulacion
+    
+        |branch.py
+    
+        |branch_bank.py
+    
+        |branch_client.py
+
+        |generator.py
+    
+    |-doc
   
-    |main.py
+      |-Screenshots
     
-    |branch.py
+        |Example Simulation 1.1.jpeg
+      
+        |Exmaple Simulation 1.2.jpeg
+      
+        |Example Simulation 1.3.jpeg
+      
+        |Example Simulation 1.4.jpeg
+      
+        |Summary Simulation 1.jpeg
+      
+        |Example Simulation 2.1.jpeg
+      
+        |Example Simulation 2.2.jpeg
+      
+        |Example Simulation 2.3.jpeg
+      
+        |Summary Simulation 2.jpeg
+      
+      |main.tex
     
-    |branch_bank.py
+      |Project_AI.pdf
     
-    |branch_client.py
+    |-data_analisys
     
-  |-doc
+      |bank_analisys.ipynb
+    
+      |simulations.csv
+
+  |-Segunda entrega
+    
+    |-doc
   
-    |-Screenshots
+      |-src
+
+      |config.py
+      
+      |main.py
+
+      |-simulacion
     
-      |Example Simulation 1.1.jpeg
-      
-      |Exmaple Simulation 1.2.jpeg
-      
-      |Example Simulation 1.3.jpeg
-      
-      |Example Simulation 1.4.jpeg
-      
-      |Summary Simulation 1.jpeg
-      
-      |Example Simulation 2.1.jpeg
-      
-      |Example Simulation 2.2.jpeg
-      
-      |Example Simulation 2.3.jpeg
-      
-      |Summary Simulation 2.jpeg
-      
-    |main.tex
+        |branch.py
     
-    |Project_AI.pdf
+        |branch_bank.py
     
-  |-data_analisys
-  
-    |bank_analisys.html
+        |branch_client.py
+
+        |generator.py
+      
+      |-Screenshots
     
-    |bank_analisys.ipynb
+        |Example Simulation1.jpeg
+      
+        |Exmaple Simulation2.jpeg
+      
+        |Example Simulation3.jpeg
+      
+        |Example Simulation4.jpeg
+      
+        |Summary Simulation.jpeg
+      
+      |main.tex
     
-    |simulation.csv
+      |Project_AI.pdf
+    
+    |-data_analisys
+    
+      |bank_analisys.ipynb
+    
+      |simulations.csv
