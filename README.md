@@ -1,28 +1,15 @@
 1. Description of the project
 
-The main objective of this project is to simulate the functioning of a bank branch, providing a realistic representation of customer service dynamics, employee roles, and operational
-workflow. The simulation will include multiple branches (A, B, and C), each designed to
-reflect the structure and organization of a real-world banking environment.
-Each branch will have a designated number of service posts available to attend to customers.
-These posts will be responsible for handling various essential banking operations as:
-- Deposit and withdrawal of money: Customers can deposit funds into their accounts
-or withdraw cash as needed.
-- Investments: Bank employees will provide investment advice, manage financial portfolios,
-and assist customers in making informed investment decisions.
-- Bank loans and credits: The bank will offer loan services, where customers can apply
-for personal or business loans, mortgages, and other credit-related products.
+The main objective of this project is to simulate the functioning of a bank branch, providing a realistic representation of customer service dynamics, employee roles, and operational workflow. The simulation will include multiple branches (A, B, and C), each designed to reflect the structure and organization of a real-world banking environment.
+Each branch will have a designated number of service posts available to attend to customers. These posts will be responsible for handling various essential banking operations as:
 
-Each service post will be managed by a dedicated employee, who will be responsible for
-efficiently handling customer requests. In addition, each branch will have a branch manager,
-tasked with overseeing daily operations, ensuring workflow efficiency, and addressing any
-issues that arise.
-Customers will arrive at the bank branch at a and will be organized into queues based on
-their order of arrival. They will then be directed to the appropriate service posts based on
-their specific banking needs. After performing operations in the branch, the customers leave.
-Each action that happened during the simulation occurs at a specific moment in time, from
-the moment a customer enters the branch to the moment the customer leaves. Moreover, the
-simulation shows how long a customer waits in the queue until its attended by an employee
-in a post of the branch.
+- Deposit and withdrawal of money: Customers can deposit funds into their accounts or withdraw cash as needed. These operations do not have any risk, as both are simple operations.
+- Investments: Bank employees will provide investment advice, manage financial portfolios, and assist customers in making informed investment decisions. Each investment has a determined risk depending on the age of the customer, the earnings and the quantity variables. With this risk the clients will have to deal with when wanting to invest. 
+- Bank loans and credits: The bank will offer loan services, where customers can apply for personal or business loans, mortgages, and other credit-related products. Each loan has a determined risk depending on the age of the customer, the earnings and the quantity variables. With this risk the clients will have to deal with when asking for a loan. 
+
+Each service post will be managed by a dedicated employee who will be responsible for efficiently handling customer requests. In addition, each branch will have a branch manager, tasked with overseeing daily operations, ensuring workflow efficiency, and addressing any issues that arise. 
+Customers will arrive at the bank branch at a and will be organized into queues based on their order of arrival. They will then be directed to the appropriate service posts based on their specific banking needs. After performing operations in the branch, the customers leave. 
+Each action that happened during the simulation occurs at a specific moment in time, from the moment a customer enters the branch to the moment the customer leaves. Each action occurs at a specific step of the simulation. Moreover, the simulation shows how long a customer waits in the queue until its attended by an employee in a post of the branch.
 
 2. Code Structure
 
@@ -56,25 +43,38 @@ The branch class provides information on the branches and the number of counters
 branch. It has counters for the total number of customers who come to the branch, the
 money lent by the bank, and the money invested by the customers.
 
+Config
+The config class defines the basic configuration parameters for the simulation, including the name of the bank, the number of simulation time steps, branch data (such as number of counters and interest rates for loans and investments), as well as possible ranges for the number of customers and their starting salaries.
+
+Fuzzy_risk
+The Fuzzy-risk class implements a fuzzy logic system with the skfuzzy library to calculate the risk associated with financial transactions based on the customer's age, balance and requested amount, using fuzzy sets and a set of rules that determine whether the risk is low, medium or high.
+
+Steps_simulation
+The Steps-simulation class contains the main logic for running the simulation in time steps using simpy, managing the operations performed by customers in each step, the concurrent execution of these operations and the generation of summaries at the end of the simulation, both at the level of each branch and of the entire bank.
+
 3. Technical Aspects
 
-The code simulates the activity of a multi-branch bank using the simpy library for event
-simulation. It is structured in four main files: main.py, which organizes the simulation;
-branch-client.py, which defines the clients and their operations; branch-bank.py, which handles branch assignment and summary generation; and branch.py, which stores the data for
-each branch.
-From the design point of view, the code seeks to follow very good encapsulation practices,
-trying to organize the functionality in specific classes such as Client, Bank and Bank-Branch.
-In practice, static typing is used, which improves code clarity, and an efficient structure is
-used to store transactions (self.history in the Bank class). In addition, the use of the simpy
-library allows modeling attention queues and waiting times in a realistic way.
-Performing a more technical analysis of each file, it can be observed that:
-- main.py: Presents a well-structured flow, since it configures branches, requests simulation
-parameters to the user, executes the process and generates a summary.
-- branch-client.py: In this class, clients execute banking operations randomly, waiting for
-their turn in the assigned branch.
-- branch-bank.py: This class manages branch randomization and generates a CSV report.
+The code simulates the activity of a multi-branch bank using the simpy library for event simulation. It is structured in seven main files: main.py, which organizes the simulation; branch-client.py, which defines the clients and their operations; branch-bank.py, which handles branch assignment and summary generation; branch.py, which stores the data for each branch; config.py, which defines the number of simulation time steps, branch data and the ranges for the number of customers and their starting salaries; fuzzy-risk.py, which calculates the risk associated with financial transactions based on the customer's age, balance and requested amount; and steps-simulation.py, which manages everything about the different steps of the simulation.
 
-4. Execution Analysis Explanation
+From the design point of view, the code seeks to follow very good encapsulation practices, trying to organize the functionality in specific classes such as Client, Bank and Bank-Branch. In practice, static typing is used, which improves code clarity, and an efficient structure is used to store transactions (self.history in the Bank class). In addition, the use of the simpy library allows modeling attention queues and waiting times in a realistic way.
+
+Performing a more technical analysis of each file, it can be observed that: 
+- main.py: Presents a well-structured flow, since it configures branches, requests simulation parameters to the user, executes the process and generates a summary. 
+- branch-client.py: In this class, clients execute banking operations randomly, waiting for their turn in the assigned branch. 
+- branch-bank.py: This class manages branch randomization and generates eight CSV reports.
+- config.py: The data structure used to define the branches allows easy parameterization of key characteristics such as the number of counters and interest rates, facilitating the scalability of the simulation to more branches or customized conditions.
+- fuzzy-risk.py: The use of a fuzzy control system to calculate financial risk adds a more realistic and flexible approach than rigid rules, allowing complex situations to be evaluated based on continuous variables such as age, balance and amount.
+- steps-simulation.py: The integration of simpy.events.AllOf to synchronize multiple concurrent client operations at each step accurately simulates the parallel execution of processes within a realistic banking environment.
+
+4. AI Employed
+
+The fuzzy risk algorithm implemented in the fuzzy-risk.py file uses fuzzy logic to evaluate the risk associated with a financial transaction (such as an investment or loan request) as a function of three input variables: the customer's age, his available balance and the amount involved in the transaction. This approach allows uncertainty and subjectivity to be handled more realistically than deterministic techniques.
+First, we define the fuzzy linguistic variables: age, balance and quantity, each divided into fuzzy subsets, for example “very young”, “medium”, “high”, by means of triangular membership functions using skfuzzy. These functions allow representing gradualness, so that a person can be “young” and “adult” at the same time, with different degrees of membership.
+The output variable, risk, is also defined as fuzzy and has three categories: low, medium and high, representing the calculated risk level. Then, 24 fuzzy rules (of the if-then type) are created that combine the inputs to determine the output value. For example: if the age is very young, the balance is very low and the amount is very small, then the risk is high. These rules mimic human decisions in financial evaluation.
+The inference engine combines the rules triggered by the input values using the skfuzzy control system, which generates a risk surface. For a specific set of inputs (age, balance, amount), the function is used to generate a risk surface. For a specific set of inputs (age, balance, amount), the evaluate-risk() function normalizes the values, inputs them to the simulation system (ControlSystemSimulation), and executes the computation.
+The result is a numerical value between 0 and 100 representing the evaluated risk. This value can be interpreted or used to make automatic decisions on whether or not to approve an operation.
+
+5. Execution Analysis Explanation
 
 By executing the project code, the program asks the user how many customers the user
 wants to generate to enter and operate in a branch. In addition, the program asks the user
@@ -128,17 +128,14 @@ message is shown when a customer leaves the branch after performing one or more 
 Specifies the number of the client, the branch at which the customer has been operating, and
 the time at which the client has finished his appointment and leaves.
 
-As explained in the description of the project, each operation is performed in a moment of
-time during the simulation, depending on when each customer has entered the branch and it
-is organized in the queue to be attended.
-Once the simulation is finished, the program generates a summary of each branch. This
-summary collects all the information and every event that happened during the simulation.
-It shows the user the number of clients that attended each branch, the total amount of money
-lent by the bank in each branch, and the total amount of money invested by the clients in
-each branch during the simulation.
-All the information is stored at the end of the simulation in a file called ”summary-branches.csv”.
+As explained in the description of the project, each operation is performed in a moment of time during the simulation, depending on when each customer has entered the branch and it is organized in the queue to be attended.
+Once the simulation is finished, the program generates a summary of each branch. This summary collects all the information and every event that happened during the simulation. It shows the user the number of clients that attended each branch, the total amount of money lent by the bank in each branch, and the total amount of money invested by the clients in each branch during the simulation. 
 
-5. Structure
+All the information is stored at the end of the simulation in eight files .csv. These files name and content are different because of the number of clients that are in the simulation of each file, and because of the minimum and the maximum amount of money the clients can have at the beginning, in the simulation of each file. These files are called: "simulation-x-y-z.csv", where x represents the number of clients, y represents the minimum amount of money the clients can have at the beginning of the simulation, and z represents the maximum amount of money the clients can have at the beginning of the simulation.
+
+Moreover, all the data are analyzed in "bank-analisys.ipynb", where six graphics are created to represent some simulation data and the AI employed. This six graphics represent: the risk evolution per branch over simulation's time (in each step); the risk distribution per operation (only invest and loan); the risk average and the quantity of money operated with per branch; the distribution of risks levels across all operations in all simulations; the correlations between numerical variables like "quantity", "risk", "balance" and "step"; and the average risk and final balance for each simulation scenario.
+
+6. Structure
 
 |-Primera Entrega Bank.zip
 
